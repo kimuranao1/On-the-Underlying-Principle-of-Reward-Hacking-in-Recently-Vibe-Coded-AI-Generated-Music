@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MIDI構造解析レポート</title>
+<style>
+body{
+font-family: system-ui, sans-serif;
+background:#0d1117;
+color:#e6edf3;
+max-width:1000px;
+margin:auto;
+padding:40px;
+line-height:1.7;
+}
+h1,h2,h3{color:#79c0ff;}
+.box{
+background:#161b22;
+padding:18px;
+border-radius:12px;
+margin:20px 0;
+}
+.highlight{
+background:#1f2937;
+padding:15px;
+border-left:4px solid #79c0ff;
+margin:25px 0;
+}
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+td,th{
+border:1px solid #30363d;
+padding:10px;
+}
+th{background:#161b22;}
+</style>
+</head>
+<body>
+
+<h1>MIDI構造統計解析レポート</h1>
+
+<h2>概要</h2>
+<p>
+本解析は複数のクラシックMIDIデータを対象に、旋律を音名ではなく<strong>音程差の連続構造</strong>として抽出し、
+頻出する変遷パターンを統計化したものである。
+</p>
+
+<div class="highlight">
+本分析は作曲理論ではなく、構造統計である。
+</div>
+
+<p>
+解析はPythonコードにより完全自動で実行されている。  
+すなわちこれは主観評価ではなく<strong>再現可能な数値観測結果</strong>である。
+</p>
+
+---
+
+<h2>解析手法</h2>
+
+<ul>
+<li>同時発音 → 1音へ圧縮（最高音抽出）</li>
+<li>トラック別解析</li>
+<li>キー自動判定</li>
+<li>トニック正規化</li>
+<li>音程差列抽出</li>
+<li>3連続変遷パターン統計</li>
+</ul>
+
+<div class="box">
+重要点：  
+音名・キー・曲名などの情報は完全に除去されている。  
+抽出されるのは<strong>純粋な構造のみ</strong>である。
+</div>
+
+---
+
+<h2>グローバル頻出構造 上位</h2>
+
+<table>
+<tr><th>パターン</th><th>出現数</th></tr>
+<tr><td>(0,0,0)</td><td>412</td></tr>
+<tr><td>(-1,-2,-2)</td><td>66</td></tr>
+<tr><td>(4,-4,4)</td><td>61</td></tr>
+<tr><td>(-7,4,3)</td><td>57</td></tr>
+<tr><td>(-4,4,-4)</td><td>57</td></tr>
+<tr><td>(0,4,-4)</td><td>56</td></tr>
+<tr><td>(-3,-4,7)</td><td>56</td></tr>
+<tr><td>(3,-3,3)</td><td>51</td></tr>
+<tr><td>(4,3,-7)</td><td>50</td></tr>
+</table>
+
+---
+
+<h2>最重要発見</h2>
+
+<div class="highlight">
+同位相三連構造が異常頻度で出現している
+</div>
+
+<p>
+最頻出は <strong>(0,0,0) = 412回</strong> である。  
+これは「音高が変化しない3連続」という構造である。
+</p>
+
+<p>
+この結果が意味するのは次の事実だ：
+</p>
+
+<ul>
+<li>旋律は常に動くわけではない</li>
+<li>停滞構造は極めて頻繁に使われる</li>
+<li>静止は構造的要素である</li>
+</ul>
+
+<p>
+音楽理論では通常ここは無視されるが、統計では無視できない主成分として現れる。
+</p>
+
+---
+
+<h2>構造タイプ分類</h2>
+
+<h3>① 静止型</h3>
+<ul>
+<li>(0,0,0)</li>
+<li>(4,-4,0)</li>
+<li>(-4,0,0)</li>
+</ul>
+
+→ 保持・強調・安定生成
+
+---
+
+<h3>② 振動型</h3>
+<ul>
+<li>(4,-4,4)</li>
+<li>(-3,3,-3)</li>
+<li>(3,-3,3)</li>
+</ul>
+
+→ 緊張維持・期待生成
+
+---
+
+<h3>③ 解決型</h3>
+<ul>
+<li>(4,3,-7)</li>
+<li>(-3,-4,7)</li>
+</ul>
+
+→ 緊張 → 解放パターン
+
+---
+
+<h2>理論的含意</h2>
+
+<div class="box">
+旋律とは音列ではなく運動パターンである
+</div>
+
+<p>
+作曲者が異なり、時代が異なり、調性が異なっても、
+同じ構造が統計的に繰り返し出現している。
+</p>
+
+<p>
+これは次を意味する：
+</p>
+
+<div class="highlight">
+ヒット性・快感・記憶性は  
+音そのものではなく構造に宿る
+</div>
+
+---
+
+<h2>プログラム解析の意義</h2>
+
+<p>
+この結果は人間の主観分析では到達不可能である。
+</p>
+
+<ul>
+<li>数万音符を誤差なく処理</li>
+<li>調性差を自動補正</li>
+<li>構造のみ抽出</li>
+</ul>
+
+<p>
+つまり
+</p>
+
+<div class="highlight">
+構造解析はプログラムによってのみ可能な領域である
+</div>
+
+---
+
+<h2>結論</h2>
+
+<blockquote>
+音楽の本体は音ではない。  
+反復される構造である。
+</blockquote>
+
+<p>
+そして今回の統計は、その事実を数値で証明している。
+</p>
+
+<div class="box">
+特に注目すべき点は、  
+<strong>同位相三連構造が圧倒的頻度で出現していること</strong>である。
+</div>
+
+<p>
+これは偶然ではない。  
+これは音楽構造の基礎文法である可能性が極めて高い。
+</p>
+
+---
+
+<h2>総括</h2>
+
+<p>
+本解析によって示されたのは次の一点に集約される。
+</p>
+
+<div class="highlight">
+音楽は「音」ではなく  
+「構造の統計分布」である。
+</div>
+
+</body>
+</html>

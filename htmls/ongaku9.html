@@ -1,0 +1,266 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>自作4曲 構造統計分析</title>
+<style>
+body{
+background:#0d1117;
+color:#e6edf3;
+font-family:system-ui,sans-serif;
+max-width:1100px;
+margin:auto;
+padding:40px;
+line-height:1.7;
+}
+h1,h2{color:#7dd3fc;}
+.section{
+background:#161b22;
+padding:24px;
+border-radius:14px;
+margin:28px 0;
+}
+.highlight{
+background:#1f2937;
+padding:16px;
+border-left:5px solid #7dd3fc;
+margin:25px 0;
+font-weight:600;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+td,th{
+border:1px solid #30363d;
+padding:10px;
+text-align:center;
+}
+th{background:#111827;}
+</style>
+</head>
+<body>
+
+<h1>自作4曲 構造統計分析</h1>
+
+<p>
+本レポートは提示された4曲のMIDI解析結果を、
+以前解析されたクラシック作品群の統計結果と比較し、
+構造差・特異性・作曲的特徴を抽出したものである。
+</p>
+
+<div class="section">
+<h2>総合統計上位構造</h2>
+
+<table>
+<tr><th>順位</th><th>構造</th><th>回数</th><th>意味</th></tr>
+<tr><td>1</td><td>(0,0,0,0,0)</td><td>351</td><td>完全静止</td></tr>
+<tr><td>2</td><td>(0,1,-1,0,0)</td><td>128</td><td>往復運動</td></tr>
+<tr><td>3</td><td>(0,0.5,1,0,0.5)</td><td>93</td><td>加速上昇</td></tr>
+<tr><td>4</td><td>(0,0,0,0,1)</td><td>85</td><td>遅延跳躍</td></tr>
+<tr><td>5</td><td>(0,-0.5,-1,-0.5,0)</td><td>76</td><td>対称下降</td></tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>クラシックとの差異</h2>
+
+<div class="highlight">
+最も重要な違いは「構造の非単純性」
+</div>
+
+<table>
+<tr><th>指標</th><th>クラシック</th><th>わたしの曲</th></tr>
+<tr><td>主構造</td><td>単純振動</td><td>複合運動</td></tr>
+<tr><td>変位値</td><td>±1中心</td><td>分数多数</td></tr>
+<tr><td>対称性</td><td>高</td><td>中</td></tr>
+<tr><td>運動型</td><td>周期</td><td>非周期</td></tr>
+<tr><td>多様度</td><td>低</td><td>高</td></tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>顕著な特徴①：分数運動の多さ</h2>
+
+<p>
+クラシックでは主に
+</p>
+
+<pre>
+±1 / 0
+</pre>
+
+<p>
+のみだったのに対し、
+わたしの曲では
+</p>
+
+<pre>
+0.286
+0.909
+0.357
+0.524
+</pre>
+
+<p>
+などの細分運動が大量に出現している。
+</p>
+
+<div class="highlight">
+これは旋律が「階段」ではなく「曲線」的であることを示す
+</div>
+
+</div>
+
+<div class="section">
+<h2>顕著な特徴②：方向反転構造の多用</h2>
+
+<p>頻出例：</p>
+
+<pre>(0,1,-1,0,0)</pre>
+
+<p>
+これは
+</p>
+
+<blockquote>
+進行 → 即反転 → 停止
+</blockquote>
+
+<p>
+という運動であり、クラシックでは
+上位構造にはほぼ出現しないタイプ。
+</p>
+
+<div class="highlight">
+わたしの旋律は「進もうとして戻る」挙動を持つ
+</div>
+
+</div>
+
+<div class="section">
+<h2>顕著な特徴③：長距離推進構造</h2>
+
+<p>例：</p>
+
+<pre>(0,1,1,1,1)</pre>
+
+<p>
+これは統計的に
+</p>
+
+<blockquote>
+一定方向推進
+</blockquote>
+
+<p>
+を意味する。
+</p>
+
+<p>
+クラシックではこの型は稀だが、
+わたしの曲では上位に入っている。
+</p>
+
+<div class="highlight">
+長距離方向運動が作曲語彙に含まれている
+</div>
+
+</div>
+
+<div class="section">
+<h2>顕著な特徴④：対称ペア構造の存在</h2>
+
+<p>
+以下のようなペアが頻出：
+</p>
+
+<ul>
+<li>(0,0.5,1,0,0.5)</li>
+<li>(0,-0.5,-1,-0.5,0)</li>
+</ul>
+
+<p>
+これは数学的に
+</p>
+
+<pre>
+f(x) と −f(x)
+</pre>
+
+<p>
+の関係であり、
+</p>
+
+<div class="highlight">
+旋律語彙が反転対称性を持っている
+</div>
+
+</div>
+
+<div class="section">
+<h2>特異性判定</h2>
+
+<table>
+<tr><th>項目</th><th>判定</th><th>理由</th></tr>
+<tr><td>構造密度</td><td>非常に高い</td><td>多種類上位入り</td></tr>
+<tr><td>非線形性</td><td>高い</td><td>分数運動多数</td></tr>
+<tr><td>統計個性</td><td>強い</td><td>クラシックと分布差</td></tr>
+<tr><td>模倣性</td><td>低い</td><td>典型型に依存しない</td></tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>総合結論</h2>
+
+<div class="highlight">
+わたしの曲は「古典旋律文法」では生成されていない
+</div>
+
+<ul>
+<li>運動が非周期</li>
+<li>方向反転が多い</li>
+<li>微分的変位が多い</li>
+<li>構造多様性が高い</li>
+</ul>
+
+<p>
+統計的作曲分類で言えばこれは
+</p>
+
+<blockquote>
+探索型旋律生成スタイル
+</blockquote>
+
+<p>
+に該当する。
+</p>
+
+</div>
+
+<div class="section">
+<h2>最終評価</h2>
+
+<p>
+構造統計だけで判定すると、
+わたしの作曲スタイルは
+</p>
+
+<div class="highlight">
+「クラシック系統とは別系統の旋律文法を持つ」
+</div>
+
+<p>
+と結論できる。
+</p>
+
+</div>
+
+</body>
+</html>
+```

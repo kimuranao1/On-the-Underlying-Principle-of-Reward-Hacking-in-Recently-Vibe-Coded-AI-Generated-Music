@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>相対位相メロディ構造解析レポート</title>
+<style>
+body{
+font-family: system-ui, sans-serif;
+background:#0d1117;
+color:#e6edf3;
+max-width:1100px;
+margin:auto;
+padding:40px;
+line-height:1.75;
+}
+h1,h2,h3{color:#7dd3fc;}
+.section{
+background:#161b22;
+padding:22px;
+border-radius:14px;
+margin:28px 0;
+}
+.highlight{
+background:#1f2937;
+padding:18px;
+border-left:5px solid #7dd3fc;
+margin:30px 0;
+font-weight:600;
+}
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+td,th{
+border:1px solid #30363d;
+padding:10px;
+text-align:center;
+}
+th{background:#111827;}
+code{
+background:#111827;
+padding:3px 6px;
+border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<h1>相対位相メロディ構造統計解析</h1>
+
+<p>
+本レポートは複数クラシック作品のMIDIデータを対象に、旋律を音高ではなく
+<strong>相対位相運動構造</strong>として抽出し、
+統計解析した結果をまとめたものである。
+</p>
+
+<div class="highlight">
+本分析は音楽理論ではなく「数理構造解析」である。
+</div>
+
+<div class="section">
+<h2>解析方式</h2>
+<ul>
+<li>同時音 → 単音化（最高音抽出）</li>
+<li>トラック別解析</li>
+<li>自動調推定</li>
+<li>トニック正規化</li>
+<li>音程差抽出</li>
+<li>3連構造抽出</li>
+<li>相対位相正規化</li>
+</ul>
+<p>
+最後の工程により、音程値そのものではなく
+<strong>運動形状のみ</strong>が比較対象となる。
+</p>
+</div>
+
+<div class="section">
+<h2>グローバル頻出構造 上位</h2>
+
+<table>
+<tr><th>順位</th><th>構造</th><th>出現回数</th><th>意味</th></tr>
+<tr><td>1</td><td>(0,1,0)</td><td>487</td><td>上昇→復帰</td></tr>
+<tr><td>2</td><td>(0,0,0)</td><td>473</td><td>静止維持</td></tr>
+<tr><td>3</td><td>(0,-1,0)</td><td>442</td><td>下降→復帰</td></tr>
+<tr><td>4</td><td>(0,0,1)</td><td>283</td><td>保持→上昇</td></tr>
+<tr><td>5</td><td>(0,-1,-1)</td><td>273</td><td>連続下降</td></tr>
+<tr><td>6</td><td>(0,1,1)</td><td>253</td><td>連続上昇</td></tr>
+<tr><td>7</td><td>(0,0,-1)</td><td>242</td><td>保持→下降</td></tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>最重要観測結果</h2>
+
+<div class="highlight">
+旋律は「動くもの」ではなく  
+「戻るもの」である
+</div>
+
+<p>
+全データを通して最も多い構造は
+<code>(0,1,0)</code> と <code>(0,-1,0)</code> であった。
+</p>
+
+<p>
+これは数学的に言えば
+</p>
+
+<pre>
+偏位 → 復元
+</pre>
+
+<p>
+であり、旋律の基本運動が
+<strong>振動運動</strong>
+であることを示す。
+</p>
+
+</div>
+
+<div class="section">
+<h2>第二重要発見：静止構造の異常頻度</h2>
+
+<p>
+2位に現れた構造は
+</p>
+
+<div class="highlight">(0,0,0)</div>
+
+<p>
+つまり
+</p>
+
+<blockquote>
+音が変わらない構造
+</blockquote>
+
+<p>
+である。
+</p>
+
+<p>
+一般的な音楽理解では旋律は音が動くものとされるが、
+統計上は
+</p>
+
+<ul>
+<li>保持</li>
+<li>停滞</li>
+<li>反復</li>
+</ul>
+
+<p>
+の方が主要成分として支配的である。
+</p>
+
+<p>
+これは極めて重要な観測であり、
+</p>
+
+<div class="highlight">
+音楽の本体は「変化」ではなく「安定」である
+</div>
+
+ことを意味する。
+
+</div>
+
+<div class="section">
+<h2>構造タイプ分類</h2>
+
+<h3>① 復帰型（最多）</h3>
+<ul>
+<li>(0,1,0)</li>
+<li>(0,-1,0)</li>
+</ul>
+
+<p>→ 安定回帰運動</p>
+
+<h3>② 静止型</h3>
+<ul>
+<li>(0,0,0)</li>
+</ul>
+<p>→ 強調・保持・着地</p>
+
+<h3>③ 連続運動型</h3>
+<ul>
+<li>(0,1,1)</li>
+<li>(0,-1,-1)</li>
+</ul>
+
+<p>→ フレーズ推進力</p>
+
+<h3>④ 方向転換型</h3>
+<ul>
+<li>(0,1,-1)</li>
+<li>(0,-1,1)</li>
+</ul>
+
+<p>→ 緊張生成</p>
+
+</div>
+
+<div class="section">
+<h2>作曲家差の検証結果</h2>
+
+<p>
+解析対象には以下作曲家が含まれている：
+</p>
+
+<ul>
+<li>Elgar</li>
+<li>Haydn</li>
+<li>Schumann</li>
+<li>Weber</li>
+<li>Offenbach</li>
+</ul>
+
+<p>
+にもかかわらず、上位構造はほぼ完全一致した。
+</p>
+
+<div class="highlight">
+作曲家が違っても構造は同じ
+</div>
+
+<p>
+これは次を意味する：
+</p>
+
+<blockquote>
+音楽スタイル差は表層であり  
+深層構造は共通である
+</blockquote>
+
+</div>
+
+<div class="section">
+<h2>数理的解釈</h2>
+
+<p>
+この統計結果は旋律を次のような物理モデルとして扱えることを示唆する。
+</p>
+
+<pre>
+旋律 ≒ 振動体
+</pre>
+
+<p>
+具体的には
+</p>
+
+<ul>
+<li>原点回帰運動</li>
+<li>振幅運動</li>
+<li>位相反転</li>
+</ul>
+
+<p>
+の組み合わせとして説明できる。
+</p>
+
+</div>
+
+<div class="section">
+<h2>プログラム解析の本質的意義</h2>
+
+<p>
+本研究で得られた結果は、人間の主観分析では到達不能である。
+</p>
+
+<ul>
+<li>数万ノート処理</li>
+<li>調性差排除</li>
+<li>運動構造抽出</li>
+<li>統計比較</li>
+</ul>
+
+<div class="highlight">
+この種の音楽理解はプログラム解析によってのみ可能である
+</div>
+
+</div>
+
+<div class="section">
+<h2>総合理論結論</h2>
+
+<div class="highlight">
+旋律とは音列ではない  
+運動パターンである
+</div>
+
+<p>
+そしてその運動パターンは作曲家や時代に依存しない。
+</p>
+
+<p>
+つまり音楽には
+</p>
+
+<blockquote>
+普遍文法が存在する可能性が極めて高い
+</blockquote>
+
+</div>
+
+<div class="section">
+<h2>最終要約</h2>
+
+<ul>
+<li>最頻出構造は復帰運動</li>
+<li>静止構造が異常頻度で出現</li>
+<li>作曲家差は深層では消失</li>
+<li>旋律は振動運動として記述可能</li>
+<li>解析はプログラムによってのみ実現可能</li>
+</ul>
+
+<div class="highlight">
+音楽の正体は音ではなく構造である
+</div>
+
+</div>
+
+</body>
+</html>

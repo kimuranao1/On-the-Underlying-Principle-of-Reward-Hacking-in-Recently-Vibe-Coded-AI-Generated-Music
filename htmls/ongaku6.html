@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Relative Phase Melody Structure Analysis Report</title>
+<style>
+body{
+font-family: system-ui, sans-serif;
+background:#0d1117;
+color:#e6edf3;
+max-width:1100px;
+margin:auto;
+padding:40px;
+line-height:1.75;
+}
+h1,h2,h3{color:#7dd3fc;}
+.section{
+background:#161b22;
+padding:22px;
+border-radius:14px;
+margin:28px 0;
+}
+.highlight{
+background:#1f2937;
+padding:18px;
+border-left:5px solid #7dd3fc;
+margin:30px 0;
+font-weight:600;
+}
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+td,th{
+border:1px solid #30363d;
+padding:10px;
+text-align:center;
+}
+th{background:#111827;}
+code{
+background:#111827;
+padding:3px 6px;
+border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<h1>Statistical Analysis of Relative Phase Melody Structure</h1>
+
+<p>
+This report summarizes the results of a statistical analysis of MIDI data from multiple classical works, extracting melodies as their <strong>relative phase motion structure</strong> rather than pitch.
+
+</p>
+
+<div class="highlight">
+This analysis is not based on music theory, but rather on mathematical structural analysis.
+</div>
+
+<div class="section">
+<h2>Analysis Method</h2>
+<ul>
+<li>Converting Simultaneous Notes to Single Notes (Extracting Highest Note)</li>
+<li>Analysis by Track</li>
+<li>Automatic Pitch Estimation</li>
+<li>Tonic Normalization</li>
+<li>Pitch Difference Extraction</li>
+<li>Triple Structure Extraction</li>
+<li>Relative Phase Normalization</li>
+</ul>
+<p>
+This final step allows comparison to be made not only on the pitch values ​​themselves, but also on the movement shapes.
+</p>
+</div>
+
+<div class="section">
+<h2>Global Frequent Structures Top</h2>
+
+<table>
+<tr><th>Order</th><th>Structure</th><th>Number of occurrences</th><th>Meaning</th></tr>
+<tr><td>1</td><td>(0,1,0)</td><td>487</td><td>Rise → Return</td></tr>
+<tr><td>2</td><td>(0,0,0)</td><td>473</td><td>Keep stationary</td></tr>
+<tr><td>3</td><td>(0,-1,0)</td><td>442</td><td>Down → Return</td></tr>
+<tr><t d>4</td><td>(0,0,1)</td><td>283</td><td>Hold → Rise</td></tr>
+<tr><td>5</td><td>(0,-1,-1)</td><td>273</td><td>Continuous Decline</td></tr>
+<tr><td>6</td><td>(0,1,1)</td><td>253</td><td>Continuous Decline</td></tr>
+<tr><td>7</td><td>(0,0,-1)</td><td>242</td><td>Hold → Decline</td></tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>Most Important Observation</h2>
+
+<div class="highlight">
+Melody is not something that "moves," but something that "returns."
+</div>
+
+<p>
+The most common structures across all data were
+<code>(0,1,0)</code> and <code>(0,-1,0)</code>.
+</p>
+
+<p>
+Mathematically speaking, this is
+</p>
+
+<pre>
+Deviation → Restoration
+</pre>
+
+<p>
+This indicates that the fundamental motion of melody is
+<strong>oscillatory motion</strong>.
+
+</p>
+
+</div>
+
+<div class="section">
+<h2>Second Important Discovery: Anomalous Frequency of Static Structures</h2>
+
+<p>
+The structure that appeared in second place was
+</p>
+
+<div class="highlight">(0,0,0)</div>
+
+<p>
+In other words,
+</p>
+
+<blockquote>
+A structure in which the sound does not change
+</blockquote>
+
+<p>
+...
+
+</div>
+
+<div class="section">
+<h2>Structural type classification</h2>
+
+<h3>① Return type (most common)</h3>
+<ul>
+<li>(0,1,0)</li>
+<li>(0,-1,0)</li>
+</ul>
+
+<p>→ Stable regression motion</p>
+
+<h3>② Stationary type</h3>
+<ul>
+<li>(0,0,0)</li>
+</ul>
+<p>→ Emphasis, retention, landing</p>
+
+<h3>③ Continuous motion type</h3>
+<ul>
+<li>(0,1,1)</li>
+<li>(0,-1,-1)</li>
+</ul>
+
+<p>→ Phrase driving force</p>
+
+<h3>④ Directional change type</h3>
+<ul>
+<li>(0,1,-1)</li>
+<li>(0,-1,1)</li>
+</ul>
+
+<p>→ Tension generation</p>
+
+</div>
+
+<div class="section">
+<h2>Composer Differences Test Results</h2>
+
+<p>
+The following composers were included in the analysis:
+</p>
+
+<ul>
+<li>Elgar</li>
+<li>Haydn</li>
+<li>Schumann</li>
+<li>Weber</li>
+<li>Offenbach</li>
+</ul>
+
+<p>
+Despite this, the superordinate structure was almost perfectly consistent.
+</p>
+
+<div class="highlight">
+The structure is the same regardless of the composer.
+</div>
+
+<p>
+This means:
+</p>
+
+<blockquote>
+Differences in musical style are superficial,
+but the deep structure is the same.
+</blockquote>
+
+</div>
+
+<div class="section">
+<h2>Mathematical Interpretation</h2>
+
+<p>
+These statistical results suggest that melody can be treated as the following physical model:
+</p>
+
+<pre>
+Melody ≒ Oscillating Body
+</pre>
+
+<p>
+Specifically,
+</p>
+
+<ul>
+<li>Origin Return Motion</li>
+<li>Oscillatory Motion</li>
+<li>Phase Inversion</li>
+</ul>
+
+<p>
+It can be explained as a combination of these.
+</p>
+
+</div>
+
+<div class="section">
+<h2>The Essential Significance of Program Analysis</h2>
+
+<p>
+The results obtained in this study are unattainable through subjective human analysis.
+</p>
+
+<ul>
+<li>Processing Tens of Thousands of Notes</li>
+<li>Eliminating Tonal Differences</li>
+<li>Extracting Movement Structure</li>
+<li>Statistical Comparison</li>
+</ul>
+
+<div class="highlight">
+This type of musical understanding is only possible through program analysis.
+</div>
+
+</div>
+
+<div class="section">
+<h2>Comprehensive Theoretical Conclusion</h2>
+
+<div class="highlight">
+Melody is not a sequence of notes, but a movement pattern.
+</div>
+
+<p>
+And this movement pattern is independent of the composer or era.
+</p>
+
+<p>
+In other words, music
+</p>
+
+<blockquote>
+It is highly likely that a universal grammar exists.
+</blockquote>
+
+</div>
+
+<div class="section">
+<h2>Final Summary</h2>
+
+<ul>
+<li>The most frequent structure is return motion.</li>
+<li>Stationary structures appear with extraordinary frequency.</li>
+<li>Composer differences disappear at deeper levels.</li>
+<li>Melody can be described as oscillatory motion.</li>
+<li>Analysis can only be achieved by computer program.</li>
+</ul>
+
+<div class="highlight">
+The true nature of music is not sound, but structure.
+</div>
+
+</div>
+
+</body>
+</html>
